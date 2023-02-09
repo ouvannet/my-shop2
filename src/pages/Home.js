@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import fireDb from "../firebase";
+import {Link} from "react-router-dom";
+// import Telegram from 'telegram-send-message';
 // import {Link} from "telegram-send-message";
 import "./Home.css";
 import {set} from "firebase/database";
@@ -27,6 +29,7 @@ const Home = () => {
   window.onbeforeunload = function(e){
     localStorage.clear();
   };
+  console.log("data");
   console.log(data);
 
   const handleIncrement=(pri,id,name,quan,cou)=>{
@@ -114,7 +117,7 @@ const Home = () => {
     // });
   }
   useEffect(()=>{
-    fireDb.child("price").on("value", (snapshot)=>{
+    fireDb.child("contacts").on("value", (snapshot)=>{
       console.log(snapshot);
       if(snapshot.val()!==null){
         setData({...snapshot.val() });
@@ -140,7 +143,7 @@ const Home = () => {
   }
 
 
-
+console.log(data);
 
   return (
     <div className='out_card'>
@@ -150,7 +153,7 @@ const Home = () => {
                     ""
                 )}
 
-    {Object.keys(data).map((id, index)=>{
+            {Object.keys(data).map((id, index)=>{
               
               return(
               
