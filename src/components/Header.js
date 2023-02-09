@@ -26,7 +26,7 @@ console.log(localStorage.getItem("login"));
                     Home
                 </p>
             </Link>
-            {sessionStorage.getItem("login")=="123"?(
+            {sessionStorage.getItem("vannet")=="123"?(
                 <Link to="/add">
                     <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
                         Add Contact
