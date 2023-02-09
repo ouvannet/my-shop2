@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
     const [activeTab, setActiveTab] = useState("Home");
     const location=useLocation();
-
+console.log(localStorage.getItem("login"));
 
 
     useEffect(() => {
@@ -26,11 +26,19 @@ const Header = () => {
                     Home
                 </p>
             </Link>
-            <Link to="/add">
-                <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
-                    Add Contact
-                </p>
-            </Link>
+            {sessionStorage.getItem("login")=="123"?(
+                <Link to="/add">
+                    <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
+                        Add Contact
+                    </p>
+                </Link>
+            ):(
+                <Link to="/login">
+                    <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
+                        Login
+                    </p>
+                </Link>
+            )}
             <Link to="/about">
                 <p className={`${activeTab === "About" ? "active" : ""}`} onClick={()=>setActiveTab("About")}>
                     About
