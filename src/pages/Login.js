@@ -35,18 +35,19 @@ const Login = () => {
         sessionStorage.setItem(userinput1, userinput2);
 
         e.preventDefault();
-    if(!name || !password){
-      toast.error("Please provide value in each input field");
-    }else{
-      fireDb.child("user").push(state,(err)=>{
-        if(err){
-          toast.error(err);
+        if(!name || !password){
+          toast.error("Please provide value in each input field");
         }else{
-          toast.success("Contact Added Successfully");
+          fireDb.child("user").push(state,(err)=>{
+            if(err){
+              toast.error(err);
+            }else{
+              toast.success("Contact Added Successfully");
+            }
+          });
+        //   setTimeout(()=> history.push("/"),500);
         }
-      });
-    //   setTimeout(()=> history.push("/"),500);
-    }
+        window.location.reload(false);
     }
   return (
     <div style={{marginTop:"10px"}}>
