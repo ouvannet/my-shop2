@@ -122,7 +122,7 @@ const AddEdit = () => {
   };
   return (
     <div style={{marginTop:"10px"}}>
-        <form style={{margin:"auto",padding:"15px",maxWidth:"400px",alignContent:"center",}} onSubmit={handleSubmit}>
+        <form style={{margin:"auto",padding:"15px",maxWidth:"400px",alignContent:"center",}}>
             <label htmlFor='name'>Name</label>
             <input 
                 type="text"
@@ -170,7 +170,7 @@ const AddEdit = () => {
               <img alt="your img" src={url} width="100%"/>
             </div>
             {url?(
-              <input type="submit" onClick={uploadImage} value={id ? "Update" : "Save"} />
+              <button onClick={handleSubmit} >Add Product</button>
             ):("")}
              
         </form>
