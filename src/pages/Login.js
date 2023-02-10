@@ -47,7 +47,7 @@ const Login = () => {
           });
         //   setTimeout(()=> history.push("/"),500);
         }
-        window.location.reload(false);
+        // window.location.reload(false);
     }
   return (
     <div style={{marginTop:"10px"}}>
@@ -58,7 +58,7 @@ const Login = () => {
             <label htmlFor='password'>Password</label>
             <input type="text" id="password" name='password' onChange={userInput2} placeholder="Your password..."></input>
 
-            <input type="button" onClick={userLogin} value={"Login"} />
+            <button onClick={userLogin} >click</button>
         </form>
     </div>
   )
