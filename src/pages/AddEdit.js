@@ -118,7 +118,7 @@ const AddEdit = () => {
       });
       setTimeout(()=> history.push("/"),500);
     }
-    window.location.reload(false);
+    // window.location.reload(false);
   };
   return (
     <div style={{marginTop:"10px"}}>
