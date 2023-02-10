@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import fireDb from "../firebase";
 import {Link} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 // import Telegram from 'telegram-send-message';
 // import {Link} from "telegram-send-message";
 import "./Home.css";
@@ -9,6 +10,8 @@ import {set} from "firebase/database";
 import {toast} from "react-toastify";
 
 const Home = () => {
+  const [activeTab, setActiveTab] = useState("Home");
+  const location=useLocation();
   const [data, setData]=useState({});
   const [disable, setDisable]=React.useState(false);
   const [count,setCount]=useState(0);
@@ -25,6 +28,15 @@ const Home = () => {
     })
     
   }
+  useEffect(() => {
+    if(location.pathname === "/"){
+        setActiveTab("Home")
+    }else if(location.pathname === "/add"){
+        setActiveTab("AddContact");
+    }else if(location.pathname === "/about"){
+        setActiveTab("About");
+    }
+}, [location]);
 
   window.onbeforeunload = function(e){
     localStorage.clear();
@@ -147,6 +159,25 @@ console.log(data);
 
   return (
     <div className='out_card'>
+      <div className='category'>
+        <Link to="/add">
+          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
+            Food
+          </p>
+        </Link>
+        <Link to="/">
+          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
+            Food
+          </p>
+        </Link>
+        <Link to="/">
+          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
+            Food
+          </p>
+        </Link>
+      </div>
+
+      
       {count !==0 ?(
                     <button className='btn btn-view' onClick={()=>boots(total)}>{count}= ${total}</button>
                 ): (
