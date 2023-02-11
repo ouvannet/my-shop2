@@ -44,12 +44,12 @@ const Home = () => {
   console.log("data");
   console.log(data);
 
-  const handleIncrement=(pri,id,name,quan,cou)=>{
+  const handleIncrement=(pri,id,name,quan,cou,url)=>{
     setCount(count+1);
     var pri=parseInt(pri);
-    console.log(cou);
+    console.log(pri);
     
-    var gget=localStorage.getItem(name);
+    var gget=localStorage.getItem(url);
     var vall=parseInt(gget);
     if(vall>=0){
       
@@ -57,7 +57,7 @@ const Home = () => {
       vall=0;
       
     }
-    localStorage.setItem(name, vall+=1);
+    localStorage.setItem(url, vall+=1);
     
     const initialState = {
       count: 1,
@@ -68,9 +68,9 @@ const Home = () => {
     }
     
     setState({...state, initialState});
-    
+    console.log(pri);
     settotal(total+pri);
-    localStorage.setItem("total",total);
+    console.log(total);
     var arrr=initialState;
     console.log(arrr.name);
     console.log(arrr.price);
@@ -90,11 +90,11 @@ const Home = () => {
       console.log(state);
       console.log(arr);
       console.log(arr[1]);
-  const handleDecrement=(pri,id,name,quan,cou)=>{
+  const handleDecrement=(pri,id,name,quan,cou,url)=>{
     setCount(count-1);
     var pri=parseInt(pri);
 
-    var gget=localStorage.getItem(name);
+    var gget=localStorage.getItem(url);
     var vall=parseInt(gget);
     if(vall>=0){
       
@@ -102,7 +102,7 @@ const Home = () => {
       vall=0;
       
     }
-    localStorage.setItem(name, vall-=1);
+    localStorage.setItem(url, vall-=1);
 
     settotal(total-pri)
 
@@ -128,6 +128,8 @@ const Home = () => {
     //   }
     // });
   }
+  console.log(total);
+  localStorage.setItem("total",total);
   useEffect(()=>{
     fireDb.child("contacts").on("value", (snapshot)=>{
       console.log(snapshot);
@@ -155,7 +157,6 @@ const Home = () => {
   }
 
 
-console.log(data);
 // alert(activeTab);
 
   return (
@@ -189,20 +190,20 @@ console.log(data);
               
               return(
               
-                <div className='card1' style={{"display":`${data[id].category!=activeTab?"none":""}`}}>
+                <div className='card1' style={{"display":`${(activeTab=="Home")?"":(data[id].category!=activeTab?"none":"")}`}}>
                     <div className='quan1'>{data[id].quantity-localStorage.getItem(data[id].name)}</div><div className='quan2'>{data[id].price} $</div>
                   <div className='card2' style={{"background":`url(${data[id].url})`,"background-size":"cover"}}>
                       {/* <img  height="100%" src={data[id].url}></img> */}
                     </div>
                     <span>{data[id].name}</span><br />
                     <div className='f-btn'>
-                      {localStorage.getItem(data[id].name)< parseInt(data[id].quantity) ?(
-                        <button className='btn btn-view' onClick={() => handleIncrement(data[id].price,id,data[id].name,data[id].quantity,data[id].count)} >+</button>
+                      {localStorage.getItem(data[id].url)< parseInt(data[id].quantity) ?(
+                        <button className='btn btn-view' onClick={() => handleIncrement(data[id].price,id,data[id].name,data[id].quantity,data[id].count,data[id].url)} >+</button>
                       ): (
                         ""
                       )}
-                      {localStorage.getItem(data[id].name)>0 ?(
-                          <button className='btn btn-view' onClick={() => handleDecrement(data[id].price,id,data[id].name,data[id].quantity,data[id].count)}>-</button>
+                      {localStorage.getItem(data[id].url)>0 ?(
+                          <button className='btn btn-view' onClick={() => handleDecrement(data[id].price,id,data[id].name,data[id].quantity,data[id].count,data[id].url)}>-</button>
                       ): (
                           ""
                       )}
