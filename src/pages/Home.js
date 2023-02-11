@@ -18,6 +18,7 @@ const Home = () => {
   const [total,settotal]=useState(0);
   const [state, setState]=React.useState([]);
   const [arr, setArr] = React.useState([]);
+  const [newrandom,setNewrandom]=useState();
   console.log(state);
 
   const boots=(tota)=>{
@@ -156,8 +157,35 @@ const Home = () => {
     }
   }
 
+  // var newar=Object.keys(data).map((id, index)=>{
 
-// alert(activeTab);
+  //   return data[id];  
+  //   console.log(data[id]);
+  // });
+  // console.log(newar);
+  // function shuffle(newar) {
+  //   var ctr = newar.length, temp, index;
+  //   while (ctr > 0) {
+  //         index = Math.floor(Math.random() * ctr);
+  //         ctr--;
+  //         temp = newar[ctr];
+  //         newar[ctr] = newar[index];
+  //         newar[index] = temp;
+  //   }
+  //   return newar;
+  // }
+      
+      // var reloadnew=()=>{
+        
+      //   setNewrandom(shuffle(newar));
+      // }
+      // console.log(newrandom);
+      
+      // // data=Object.assign({}, newrandom);
+      // console.log(data);
+  
+
+
 
   return (
     <div className='out_card'>
