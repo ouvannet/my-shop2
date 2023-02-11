@@ -10,7 +10,7 @@ import { from } from 'form-data';
 
 const initialState = {
   count:0,
-  category:"",
+  category:"Food",
   name: "",
   price: "",
   quantity: "",
