@@ -48,6 +48,7 @@ input[type="submit"]:hover{
     background-color: #f3ef08;
     padding-top: 2px;
     padding-bottom: 4px;
+  
 
 }
 .show_img{
@@ -56,4 +57,5 @@ input[type="submit"]:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 300px;
 }
