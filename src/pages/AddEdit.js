@@ -10,6 +10,7 @@ import { from } from 'form-data';
 
 const initialState = {
   count:0,
+  category:"",
   name: "",
   price: "",
   quantity: "",
@@ -52,6 +53,7 @@ const AddEdit = () => {
      
    }
    console.log(loca);
+
 
   const uploadImage = () =>{
     alert(this);
@@ -124,6 +126,13 @@ const AddEdit = () => {
     <div style={{marginTop:"10px"}}>
         <form style={{margin:"auto",padding:"15px",maxWidth:"400px",alignContent:"center",}}>
             <label htmlFor='name'>Name</label>
+            <select name="category" id="category" onChange={handleInputChange}>
+              <option value="Food">Food</option>
+              <option value="Drink">Drink</option>
+              <option value="Cloth">Cloth</option>
+            </select>
+
+            <label htmlFor='name'>Name</label>
             <input 
                 type="text"
                 id="name"
@@ -170,7 +179,7 @@ const AddEdit = () => {
               <img alt="your img" src={url} width="100%"/>
             </div>
             {url?(
-              <button onClick={handleSubmit} >Add Product</button>
+              <button onClick={handleSubmit} className="btn_submit">Add Product</button>
             ):("")}
              
         </form>

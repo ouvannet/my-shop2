@@ -28,15 +28,15 @@ const Home = () => {
     })
     
   }
-  useEffect(() => {
-    if(location.pathname === "/"){
-        setActiveTab("Home")
-    }else if(location.pathname === "/add"){
-        setActiveTab("AddContact");
-    }else if(location.pathname === "/about"){
-        setActiveTab("About");
-    }
-}, [location]);
+//   useEffect(() => {
+//     if(location.pathname === "/"){
+//         setActiveTab("Home")
+//     }else if(location.pathname === "/add"){
+//         setActiveTab("AddContact");
+//     }else if(location.pathname === "/about"){
+//         setActiveTab("About");
+//     }
+// }, [location]);
 
   window.onbeforeunload = function(e){
     localStorage.clear();
@@ -156,23 +156,24 @@ const Home = () => {
 
 
 console.log(data);
+// alert(activeTab);
 
   return (
     <div className='out_card'>
       <div className='category'>
-        <Link to="/add">
-          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
+        <Link to="/">
+          <p className={`cate ${activeTab === "Food" || activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Food")}>
             Food
           </p>
         </Link>
         <Link to="/">
-          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
-            Food
+          <p className={`cate ${activeTab === "Drink" ? "active" : ""}`} onClick={()=>setActiveTab("Drink")}>
+            Drink
           </p>
         </Link>
         <Link to="/">
-          <p className={`cate ${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
-            Food
+          <p className={`cate ${activeTab === "Cloth" ? "active" : ""}`} onClick={()=>setActiveTab("Cloth")}>
+            Cloth
           </p>
         </Link>
       </div>
@@ -188,7 +189,7 @@ console.log(data);
               
               return(
               
-                <div className='card1'>
+                <div className='card1' style={{"display":`${data[id].category!=activeTab?"none":""}`}}>
                     <div className='quan1'>{data[id].quantity-localStorage.getItem(data[id].name)}</div><div className='quan2'>{data[id].price} $</div>
                   <div className='card2' style={{"background":`url(${data[id].url})`,"background-size":"cover"}}>
                       {/* <img  height="100%" src={data[id].url}></img> */}
