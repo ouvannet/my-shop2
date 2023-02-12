@@ -66,7 +66,7 @@ const Home = () => {
       name: name,
       price: pri,
       quantity: 1,
-      img:""
+      url:url,
     }
     
     setState({...state, initialState});
@@ -91,6 +91,7 @@ const Home = () => {
   }
       console.log(state);
       console.log(arr);
+      localStorage.setItem("buypro",JSON.stringify(arr));
       console.log(arr[1]);
   const handleDecrement=(pri,id,name,quan,cou,url)=>{
     setCount(count-1);
@@ -206,11 +207,23 @@ const Home = () => {
             Cloth
           </p>
         </Link>
+        <Link to="/">
+          <p className={`cate ${activeTab === "Car" ? "active" : ""}`} onClick={()=>setActiveTab("Car")}>
+            Car
+          </p>
+        </Link>
+        <Link to="/">
+          <p className={`cate ${activeTab === "Phone" ? "active" : ""}`} onClick={()=>setActiveTab("Phone")}>
+            Phone
+          </p>
+        </Link>
       </div>
 
       
       {count !==0 ?(
+                  <Link to="/addpay">
                     <button className='btn btn-view' onClick={()=>boots(total)}>{count}= ${total}</button>
+                  </Link>
                 ): (
                     ""
                 )}

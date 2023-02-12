@@ -7,6 +7,7 @@ import { storage } from '../firebase';
 import {ref,uploadBytes,getDownloadURL} from "firebase/storage";
 import { from } from 'form-data';
 
+// sessionStorage.setItem("Login", "");
 
 const initialState = {
   count:0,
@@ -125,11 +126,13 @@ const AddEdit = () => {
   return (
     <div style={{marginTop:"10px"}}>
         <form style={{margin:"auto",padding:"15px",maxWidth:"400px",alignContent:"center",}}>
-            <label htmlFor='name'>Name</label>
+            <label htmlFor='category'>Category</label>
             <select name="category" id="category" onChange={handleInputChange}>
               <option value="Food">Food</option>
               <option value="Drink">Drink</option>
               <option value="Cloth">Cloth</option>
+              <option value="Car">Car</option>
+              <option value="Phone">Phone</option>
             </select>
 
             <label htmlFor='name'>Name</label>
@@ -176,7 +179,7 @@ const AddEdit = () => {
 
             </div>
             <div className='show_img'>
-              <img alt="your img" src={url} width="100%"/>
+              <img alt="Wait your img before click add product" src={url} width="100%"/>
             </div>
             {url?(
               <button onClick={handleSubmit} className="btn_submit">Add Product</button>

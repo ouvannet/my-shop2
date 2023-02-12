@@ -32,7 +32,7 @@ const Login = () => {
     var userLogin = (e)=>{
         console.log(userinput1);
         console.log(userinput2);
-        sessionStorage.setItem(userinput1, userinput2);
+        sessionStorage.setItem("Login", userinput1+userinput2);
 
         e.preventDefault();
         if(!name || !password){

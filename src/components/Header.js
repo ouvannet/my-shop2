@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
     const [activeTab, setActiveTab] = useState("Home");
     const location=useLocation();
-console.log(localStorage.getItem("login"));
+console.log(sessionStorage.getItem("Login"));
 
 
     useEffect(() => {
@@ -19,19 +19,29 @@ console.log(localStorage.getItem("login"));
     }, [location]);
   return (
     <div className='header'>
-        <p className='logo'>Contact App</p>
+        <p className='logo'>My Shop</p>
         <div className='header-right'>
             <Link to="/">
                 <p className={`${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>
                     Home
                 </p>
             </Link>
-            {sessionStorage.getItem("vannet")=="123"?(
-                <Link to="/add">
-                    <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
-                        Add Contact
-                    </p>
-                </Link>
+            {sessionStorage.getItem("Login")!=null?(
+
+                (sessionStorage.getItem("Login") =="vannet123"?(
+                    <Link to="/add">
+                        <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
+                            Add Product
+                        </p>
+                    </Link>
+                ):(
+                    <Link to="/chat">
+                            <p className={`${activeTab === "Chat" ? "active" : ""}`} onClick={()=>setActiveTab("Chat")}>
+                                Chat
+                            </p>
+                    </Link>
+                ))
+                
             ):(
                 <Link to="/login">
                     <p className={`${activeTab === "AddContact" ? "active" : ""}`} onClick={()=>setActiveTab("AddContact")}>
