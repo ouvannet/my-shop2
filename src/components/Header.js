@@ -19,7 +19,7 @@ console.log(sessionStorage.getItem("Login"));
     }, [location]);
   return (
     <div className='header'>
-        <p className='logo'>My Shop</p>
+        {/* <p className='logo'>My Shop</p> */}
         <div className='header-right'>
             <Link to="/">
                 <p className={`${activeTab === "Home" ? "active" : ""}`} onClick={()=>setActiveTab("Home")}>

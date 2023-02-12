@@ -38,7 +38,7 @@ const AddEdit = () => {
          result += chars.charAt(Math.floor(Math.random() * charLength));
       }
       return result;
-   }
+    }
   const handleImageChange = (e) =>{
     if(e.target.files[0]){
       setImage(e.target.files[0]);
