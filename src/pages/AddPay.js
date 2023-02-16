@@ -131,7 +131,7 @@ const AddPay = () => {
                 id="name"
                 name="name"
                 placeHolder="Your Name..."
-                // value={name || ""}
+                value={sessionStorage.getItem("Username")}
                 onChange={handleInputChange1}
              />
 
