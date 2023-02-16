@@ -7,6 +7,7 @@ import {ref,uploadBytes,getDownloadURL} from "firebase/storage";
 
 
 const initialState = {
+    type:"user",
     product:"",
     name: "",
     phone: "",
@@ -87,7 +88,7 @@ const AddPay = () => {
         if(!name || !phone){
           toast.error("Please provide value in each input field");
         }else{
-          fireDb.child("chat").push(state,(err)=>{
+          fireDb.child(sessionStorage.getItem("Username")).push(state,(err)=>{
             if(err){
               toast.error(err);
             }else{
@@ -131,7 +132,7 @@ const AddPay = () => {
                 id="name"
                 name="name"
                 placeHolder="Your Name..."
-                value={sessionStorage.getItem("Username")}
+                // value={sessionStorage.getItem("Username")}
                 onChange={handleInputChange1}
              />
 

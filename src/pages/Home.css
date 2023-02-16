@@ -132,6 +132,10 @@
     justify-content: center;
     gap: 5px;
     margin-top: -11px;
+    position: sticky;
+    top: 40px;
+    z-index: 10000;
+    background: wheat;
 }
 .category p.active{
     background-color: rgb(255, 106, 0);

@@ -12,7 +12,7 @@ const Chat = () => {
 
 
   useEffect(()=>{
-    fireDb.child("chat").on("value", (snapshot)=>{
+    fireDb.child(sessionStorage.getItem("Username")).on("value", (snapshot)=>{
       console.log(snapshot);
       if(snapshot.val()!==null){
         setData({...snapshot.val() });
@@ -34,22 +34,56 @@ const Chat = () => {
               console.log(ll);
               console.log(data);
         return(
+          (data[id].type=="user")?(
+            <table className='userbuy' border="1px">
+              
+              {Object.keys(ll).map((id, index)=>{
+                return(
+                  <tr>
+                    <td width="25.2px"><img src={ll[id].url} height="25.2px"></img></td>
+                    <td>{ll[id].name}</td>
+                    <td>{ll[id].price}</td>
+                    <td>{ll[id].quantity}</td>
+                  </tr>
+                )
+              })}
+              <tr>
+                <td colSpan={4}><img src={data[id].url} width="200px" /></td>
+              </tr>
+              <tr>
+                <td colSpan={4}>{data[id].name}</td>
+              </tr>
+              <tr>
+                <td colSpan={4}>{data[id].phone}</td>
+              </tr>
+            
+            </table>
 
-          <table className='userbuy' border="1px">
-            {Object.keys(ll).map((id, index)=>{
-              return(
-                <tr>
-                  <td width="25.2px"><img src={ll[id].url} height="25.2px"></img></td>
-                  <td>{ll[id].name}</td>
-                  <td>{ll[id].price}</td>
-                  <td>{ll[id].quantity}</td>
-                </tr>
-              )
-            })}
-            <tr>
-              <td colSpan={4}><img src={data[id].url} width="200px" /></td>
-            </tr>
-          </table>
+          ):(
+            <table className='adminsell' border="1px">
+              
+              {Object.keys(ll).map((id, index)=>{
+                return(
+                  <tr>
+                    <td width="25.2px"><img src={ll[id].url} height="25.2px"></img></td>
+                    <td>{ll[id].name}</td>
+                    <td>{ll[id].price}</td>
+                    <td>{ll[id].quantity}</td>
+                  </tr>
+                )
+              })}
+              <tr>
+                <td colSpan={4}><img src={data[id].url} width="200px" /></td>
+              </tr>
+              <tr>
+                <td colSpan={4}>{data[id].name}</td>
+              </tr>
+              <tr>
+                <td colSpan={4}>{data[id].phone}</td>
+              </tr>
+            
+            </table>
+          )
           
 
         )
