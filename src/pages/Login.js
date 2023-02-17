@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import fireDb from "../firebase";
+import {useEffect} from 'react';
 import {toast} from "react-toastify";
 
 const initialState = {
@@ -13,7 +14,26 @@ const Login = () => {
     const [userinput1, setUserinput1] = useState('');
     const [userinput2, setUserinput2] = useState('');
     const [getinput, setGetinput] = useState(userInput1);
+    const [data, setData]=useState({});
     const{name,password}=state;
+    var countUser=0;
+    useEffect(()=>{
+      fireDb.child("user").on("value", (snapshot)=>{
+        console.log(snapshot);
+        if(snapshot.val()!==null){
+          setData({...snapshot.val() });
+        }else{
+          setData({});
+        }
+      });
+      return()=>{
+        setData({});
+      }
+    },[]);
+    console.log("dadat");
+    console.log(data);
+    console.log(state);
+
     var userInput1 = (e)=>{
         const {name, value}=e.target;
         setState({...state,[name]: value});
@@ -39,13 +59,24 @@ const Login = () => {
         if(!name || !password){
           toast.error("Please provide value in each input field");
         }else{
-          fireDb.child("user").push(state,(err)=>{
-            if(err){
-              toast.error(err);
-            }else{
-              toast.success("Contact Added Successfully");
+          {Object.keys(data).map((id, index)=>{
+            if(data[id].name==state.name){
+              countUser++;
             }
-          });
+          })}
+          if(countUser==0){
+            // alert(countUser);
+            fireDb.child("user").push(state,(err)=>{
+              if(err){
+                toast.error(err);
+              }else{
+                toast.success("Contact Added Successfully");
+              }
+            });
+          }else{
+            alert("User aready");
+          }
+
         //   setTimeout(()=> history.push("/"),500);
         }
         // window.location.reload(false);

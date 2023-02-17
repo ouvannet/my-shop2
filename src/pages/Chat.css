@@ -1,6 +1,7 @@
 .userbuy{
     margin-top: 20px;
+    margin: auto;
 }
 .adminsell{
-    float: right;
+    float: left;
 }
