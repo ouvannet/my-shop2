@@ -8,9 +8,10 @@ const Header = () => {
 console.log(sessionStorage.getItem("Login"));
 
 
-    useEffect(() => {
+useEffect(() => {
+        // window.location.reload(true);
         if(location.pathname === "/"){
-            setActiveTab("Home")
+            setActiveTab("Home");
         }else if(location.pathname === "/add"){
             setActiveTab("AddContact");
         }else if(location.pathname === "/about"){

@@ -1,7 +1,41 @@
 .userbuy{
-    margin-top: 20px;
     margin: auto;
+    border-spacing: 0px;
+    margin-top: 20px;
 }
 .adminsell{
     float: left;
+}
+.userChat{
+    border: 0px solid black;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+.bodychat{
+    margin-bottom: 100px;
+}
+.message{
+    width: 80%;
+    border: 2px solid #00d5ff;
+}
+.btn_sub{
+    width: 20%;
+    height: 80%;
+    border: none;
+    background-color: #00d5ff;
+    border-radius: 5px;
+}
+.showtext{
+    border: 0px solid black;
+    width: 75%;
+    margin: auto;
+    word-wrap: break-word;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #00d5ff;
 }
