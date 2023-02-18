@@ -97,7 +97,7 @@ const AddPay = () => {
               toast.success("Contact Added Successfully");
             }
           });
-          window.location.reload(false);
+          // window.location.reload(false);
         }
     }
     return (
