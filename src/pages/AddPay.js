@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import "./AddPay.css";
+import {useNavigate, useParams} from "react-router-dom";
 import fireDb from "../firebase";
 import {toast} from "react-toastify";
 import { storage } from '../firebase';
 import {ref,uploadBytes,getDownloadURL} from "firebase/storage";
+import { useHistory } from "react-router-dom";
 
 
 const initialState = {
@@ -21,7 +23,7 @@ const AddPay = () => {
     const [url, setUrl] = useState(null);
     const [loca,setloca]=useState();
     const{name,phone,urlpay}=state;
-
+    const history=useNavigate();
 
     // {Object.keys(Productbuy).map((id, index)=>{
 
@@ -50,8 +52,8 @@ const AddPay = () => {
          }
          const {name,value}=e.target;
          setloca(value);
-         alert(name);
-         alert(value);
+        //  alert(name);
+        //  alert(value);
          console.log(state);
          // const result = Math.random().toString(36).substring(1,100);
          // console.log(result);
@@ -60,7 +62,7 @@ const AddPay = () => {
        }
 
        const uploadImage1 = () =>{
-        alert(this);
+        // alert(this);
         const imageRef = ref(storage, genRandonString(60));
         uploadBytes(imageRef, image).then(() =>{
           getDownloadURL(imageRef).then((url) =>{
@@ -95,9 +97,8 @@ const AddPay = () => {
               toast.success("Contact Added Successfully");
             }
           });
-        //   setTimeout(()=> history.push("/"),500);
+          window.location.reload(false);
         }
-        // window.location.reload(false);
     }
     return (
         <div className='cardpay'>

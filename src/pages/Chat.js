@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import './Chat.css';
+import {useRef} from 'react';
 import fireDb from "../firebase";
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router-dom";
@@ -13,6 +14,7 @@ const initialState = {
 }
 
 const Chat = () => {
+  const ref = useRef(null);
   const [data, setData]=useState({});
   const [state,setState]=useState(initialState);
   const{text}=state;
@@ -36,6 +38,7 @@ const Chat = () => {
           toast.success("Contact Added Successfully");
         }
       });
+      ref.current.value = '';
     //   setTimeout(()=> history.push("/"),500);
     }
   }
@@ -100,7 +103,7 @@ const Chat = () => {
       })}
         <div className='userChat'>
           <form style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
-              <input type="text" name='text' style={{border:"2px solid #00d5ff"}} onChange={handleInputChange55} className='message'  placeholder="Your text..."></input>
+              <input type="text" name='text' ref={ref} style={{border:"2px solid #00d5ff"}} onChange={handleInputChange55} className='message'  placeholder="Your text..."></input>
               <button onClick={userchattext}  className="btn_sub">send</button>
           </form>
         </div>
